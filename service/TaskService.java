@@ -5,19 +5,19 @@ import model.Task;
 import repository.TaskRepository;
 import observer.UserObserver;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.*;
 
 public class TaskService {
     private TaskRepository repo = new TaskRepository();
     private List<UserObserver> observers = new ArrayList<>();
 
-    public Task createTask(String title, String description, LocalDateTime deadline) {
+    public Task createTask(String title, String description, LocalDate deadline) {
         String id = UUID.randomUUID().toString();
         Task task = new Task(id, title, description, deadline);
         repo.save(task);
 
-        if (deadline.isBefore(LocalDateTime.now().plusHours(1))) {
+        if (deadline.isBefore(LocalDate.now().plusDays(1))) {
             notifyObservers("Task '" + title + "' is near its deadline!");
         }
 

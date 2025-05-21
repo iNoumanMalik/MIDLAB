@@ -6,7 +6,7 @@ import service.TaskService;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 public class TaskUI extends JFrame {
@@ -36,7 +36,7 @@ public class TaskUI extends JFrame {
         formPanel.add(titleField);
         formPanel.add(new JLabel("Description:"));
         formPanel.add(descField);
-        formPanel.add(new JLabel("Deadline (yyyy-MM-ddTHH:mm):"));
+        formPanel.add(new JLabel("Deadline (e.g., 2025-05-21):")); 
         formPanel.add(deadlineField);
 
         JButton addBtn = new JButton("Add Task");
@@ -48,7 +48,7 @@ public class TaskUI extends JFrame {
             try {
                 String title = titleField.getText();
                 String desc = descField.getText();
-                LocalDateTime deadline = LocalDateTime.parse(deadlineField.getText());
+                LocalDate deadline = LocalDate.parse(deadlineField.getText());
 
                 Task task = service.createTask(title, desc, deadline);
                 JOptionPane.showMessageDialog(this, "Task Added");

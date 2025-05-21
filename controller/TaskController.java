@@ -4,7 +4,7 @@ package controller;
 import service.TaskService;
 import model.Task;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Scanner;
 
@@ -31,7 +31,7 @@ public class TaskController {
                 System.out.print("Deadline (yyyy-MM-ddTHH:mm): ");
                 String deadlineStr = scanner.nextLine();
 
-                LocalDateTime deadline = LocalDateTime.parse(deadlineStr);
+                LocalDate deadline = LocalDate.parse(deadlineStr);
                 Task task = taskService.createTask(title, desc, deadline);
                 System.out.println("Created Task: " + task.getId());
             } else if (choice == 2) {

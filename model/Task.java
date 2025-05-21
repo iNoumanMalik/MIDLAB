@@ -1,15 +1,15 @@
 package model;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate; 
 
 public class Task {
     private String id;
     private String title;
     private String description;
     private boolean completed;
-    private LocalDateTime deadline;
+    private LocalDate deadline;
 
-    public Task(String id, String title, String description, LocalDateTime deadline) {
+    public Task(String id, String title, String description, LocalDate deadline) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -21,7 +21,7 @@ public class Task {
     public String getTitle() { return title; }
     public String getDescription() { return description; }
     public boolean isCompleted() { return completed; }
-    public LocalDateTime getDeadline() { return deadline; }
+    public LocalDate getDeadline() { return deadline; }
 
     public void markComplete() { this.completed = true; }
 }
